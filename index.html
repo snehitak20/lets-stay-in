@@ -5,14 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Link to Foundation framework-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+    <!-- Link for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- Link to external CSS file -->
     <link rel="stylesheet" href="./assets/style.css">
-    
+
     <title>Let's Stay In!</title>
 </head>
 <body>
     <h1>Let's Stay In</h1>
+
+    <form> 
+        <div class="grid-container">
+            <div class="grid-x grid-padding-x">
+              <div class="medium-6 cell">
+                <div class="input-group">
+                    <input class="form-control" type="text" id="ingredients"
+                     placeholder="Enter ingredients to view recipes">
+                        <button type="button" id="searchBtn" class="btn btn-primary">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </form>
+
+
     
+    <!-- Link to Foundation script -->
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+    <!-- Link to JavaScript file-->
     <script src="./assets/script.js"></script>
 </body>
 </html>
