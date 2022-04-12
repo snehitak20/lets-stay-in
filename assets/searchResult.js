@@ -1,4 +1,23 @@
+let searchParam;
+
+
+//on page load, we execute the getParams() function
+let getParams = function() {
+    //Get search params out of the URL
+    //for now just one value
+    searchParam = 
+};
+
+
+
+
+
+
+
+
+
 // var recipesByIdUrl = `https://api.spoonacular.com/recipes/${id}/card`;
+
 
 
 let ingredientsInput = "apple";
@@ -15,3 +34,22 @@ fetch(searchByIngredientsUrl)
 .then(function(data){
     console.log(data);
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// call funciton when page loads
+// getParams();

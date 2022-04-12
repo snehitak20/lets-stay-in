@@ -11,5 +11,6 @@ searchBtnEl.addEventListener("click", function(){
         return;
     }
    
-    location.assign("./searchResult.html");
+    var querySting = `./searchResult.html?q=${userInput}`;
+    location.assign(querySting);
 })
