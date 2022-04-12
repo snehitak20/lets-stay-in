@@ -1,12 +1,44 @@
-h1 {
-    text-align:center;
-    margin-top: 200px;
-    background-color: pink;
-     
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.input-group {
-    align-items: center;
-    text-align: center;
-    margin-left: 245px;
+:root {
+    --pink: pink; 
+}
+
+body {
+ background-color: var(--pink);
+ color: white;
+}
+
+#search-div {
+    display: flex;
+    margin: 0 25%;
+}
+
+h1 {
+    text-align:center;
+    font-size: 100px;
+    margin-top: 20%;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding-left: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+button {
+    background-color: none;
+    border: none;;
+}
+
+#searchBtn {
+    height: 60px;
+    width: 60px;
 }
