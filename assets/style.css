@@ -1,12 +1,57 @@
-h1 {
-    text-align:center;
-    margin-top: 200px;
-    background-color: pink;
-     
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.input-group {
+:root {
+    --pink: pink; 
+}
+
+body {
+ background-color: var(--pink);
+ color: white;
+}
+
+h1 {
+    text-align:center;
+    font-size: 100px;
+    margin-top: 20%;
+    margin-bottom: 20px;
+}
+
+#search-div {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-    margin-left: 245px;
+}
+
+
+#filter-div {
+    display: flex;
+    flex-direction: column;
+}
+
+#maxReadyTimeInput, #recipeInput {
+    width: 500px;
+    padding: 8px;
+}
+
+#dietInput {
+    width: 520px;
+    padding: 7px; 
+}
+
+#dietInput, #maxReadyTimeInput, #recipeInput {
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 8px;
+    border: 2px dashed white;
+}
+
+#searchBtn {
+    margin-left: 20px;
+    height: 120px;
+    width: 120px;
 }

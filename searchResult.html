@@ -6,10 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Result</title>
 
+    <!-- Link to Foundation framework-->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous"> -->
+    
+    <!-- Link to Goole Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+    <!-- Link to external CSS -->
     <link rel="stylesheet" href="./assets/searchResult.css">
 </head>
 <body>
+    <div class="left-div">
+        <div id="search-div">
+            <div id="filter-div">
+                <input id="recipeInput" type="text" placeholder="Recipes">
+                <input id="maxReadyTimeInput" type="text" placeholder="Max Ready Time (Minutes)">
+                <select id="dietInput">
+                    <option value="" disabled selected>Select</option>
+                    <option value="Gluten Free">Glueten Free</option>
+                    <option value="Ketogenic">Ketogenic</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                </select>
+            </div>
+            <div>
+                <input id="searchBtn" type="image" src="./assets/images/001-searching.png"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-div results-div">
+    </div>
+
+
+
     
+     <!-- Link to Foundation script -->
+     <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script> -->
     <script src="./assets/searchResult.js"></script>
 </body>
 </html>
