@@ -38,18 +38,18 @@ let searchAPI = function() {
             let recipeCard = document.createElement("div");
 
             let recipeTile = document.createElement("h2");
-            recipeTile.textContent = data.results[i].title;
+            recipeTile.innerHTML = data.results[i].title;
             console.log(data.results[i].title);
 
             let image = document.createElement("img");
             image.setAttribute("href", data.results[i].image);
 
             let readyTime = document.createElement("p");
-            readyTime.textContent = data.results[i].readyInMinutes;
+            readyTime.innerHTML = data.results[i].readyInMinutes;
             console.log(data.results[i].readyInMinutes);
 
             let summary = document.createElement("p");
-            summary.textContent = data.results[i].summary;
+            summary.innerHTML = data.results[i].summary;
             console.log(data.results[i].summary);
 
             let sourceUrl = document.createElement("a");
