@@ -1,16 +1,24 @@
 let searchBtnEl = document.querySelector("#searchBtn");
-let searchBarEl = document.querySelector("#searchBar");
-let userInput;
+
+let recipeInputEl = document.querySelector("#recipeInput");
+let maxReadyTimeInputEl = document.querySelector("#maxReadyTimeInput");
+let dietInputEl = document.querySelector("#dietInput");
+
+let recipeInput;
+let maxTimeInput;
+let dietInupt;
 
 
 searchBtnEl.addEventListener("click", function(){
-    userInput = searchBarEl.value.trim();
+    recipeInput = recipeInputEl.value.trim();
+    maxTimeInput = maxReadyTimeInputEl.value.trim();
+    dietInupt= dietInputEl.value.trim();
 
-    if (!userInput) {
+    if (!recipeInput || !maxTimeInput || !dietInupt) {
         console.error('You need a search input value!');
         return;
     }
    
-    var querySting = `./searchResult.html?q=${userInput}`;
+    var querySting = `./searchResult.html?q=${recipeInput}&maxreadytime=${maxTimeInput}&diet=${dietInupt}`;
     location.assign(querySting);
 })
