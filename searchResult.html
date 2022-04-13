@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Result</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 
     <!-- Link to Foundation framework-->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
     
     <!-- Link to Goole Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,33 +19,48 @@
     <link rel="stylesheet" href="./assets/searchResult.css">
 </head>
 <body>
-    <div class="left-div">
-        <div id="search-div">
-            <div id="filter-div">
-                <input id="recipeInput" type="text" placeholder="Recipes">
-                <input id="maxReadyTimeInput" type="text" placeholder="Max Ready Time (Minutes)">
-                <select id="dietInput">
-                    <option value="" disabled selected>Select</option>
-                    <option value="Gluten Free">Glueten Free</option>
-                    <option value="Ketogenic">Ketogenic</option>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Vegan">Vegan</option>
-                </select>
+    <div class="container">
+        <div class="left-div">
+
+            <div id="logo-div">
+                <a href="#"><img src="./assets/images/android-chrome-512x512.png" alt="logo image"></a>
+            </div>
+
+            <div id="search-div">
+                <div id="filter-div">
+                    <input id="recipeInput" type="text" placeholder="Recipes">
+                    <input id="maxReadyTimeInput" type="text" placeholder="Max Ready Time (Minutes)">
+                    <select id="dietInput">
+                        <option value="" disabled selected>Select</option>
+                        <option value="Gluten Free">Glueten Free</option>
+                        <option value="Ketogenic">Ketogenic</option>
+                        <option value="Vegetarian">Vegetarian</option>
+                        <option value="Vegan">Vegan</option>
+                    </select>
+                </div>
+                <div>
+                    <input id="searchBtn" type="image" src="./assets/images/001-searching.png"/>
+                </div>
             </div>
             <div>
-                <input id="searchBtn" type="image" src="./assets/images/001-searching.png"/>
+                <h2>Search History</h2>
+                <input type="text">
+            </div>
+
+            <div>
+                <button>Generate a movie</button>
+                <button>Generate a techy phase</button>
             </div>
         </div>
+
+        <div class="right-div results-div">
+
+        </div>
     </div>
-
-    <div class="right-div results-div">
-    </div>
-
-
-
     
      <!-- Link to Foundation script -->
      <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script> -->
-    <script src="./assets/searchResult.js"></script>
+     <!-- <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script> -->
+     <script src="./assets/searchResult.js"></script>
 </body>
 </html>
