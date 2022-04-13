@@ -54,19 +54,24 @@ let searchAPI = function() {
     })
 
 };
-
-var techyBtn = document.getElementsByClassName("techy")
+var fetchButton = document.getElementById('techy');
+var techyModal = document.getElementById('techyModal')
+function getApi() {
+    console.log("click")
  
 fetch('https://techy-api.vercel.app/api/json')
 .then(response =>response.json())
 .then(data => {
     console.log(data)
 
-        var techyPhrase = document.createElement()
+        var techyPhrase = document.createElement('h1')
+        techyPhrase.textContent = data.message
+
+        techyModal.append(data.message)
 })
 
-
-
+}
+fetchButton.addEventListener('click', getApi);
 
 
 
