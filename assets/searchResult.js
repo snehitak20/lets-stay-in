@@ -1,5 +1,7 @@
 let resultsEl = document.querySelector(".results-div");
 let searchedEl = document.querySelector(".searched");
+let resultCards = document.querySelector(".right-div")
+
 
 let searchParam;
 let recipeInput;
@@ -39,63 +41,91 @@ let searchAPI = function() {
     .then(function(data){
         console.log(data);
 
-        for (let i=0;  i<7; i++) {
-            let recipeCard = document.createElement("div");
+        for (let i=0;  i<6; i++) {
+            let containerCard = document.createElement("div");
+            containerCard.classList.add("grid-container");
+
+            let gridx = document.createElement("div");
+            // gridx.classList.add("grid-x", "grid-margin-x", "small-up-2", "medium-up-3");-dont use. 
+
+            let cell= document.createElement("div");
+            cell.classList.add("cell");
+
+            let card= document.createElement("div");
+            card.classList.add("card");
+
+            let cardSection = document.createElement("div");
+            cardSection.classList.add("card-section");
 
             let image = document.createElement("img");
             image.setAttribute("src", data.results[i].image);
 
-            let recipeTile = document.createElement("h2");
+            let recipeTile = document.createElement("h6");
             recipeTile.innerHTML = data.results[i].title;
             console.log(data.results[i].title);
 
             //append element to div
-            recipeCard.appendChild(recipeTile);
-            recipeCard.appendChild(image);
+            cardSection.appendChild(recipeTile);
+            cardSection.appendChild(image);
 
-            //append recipeCard to results-div
-            resultsEl.appendChild(recipeCard);
+            card.appendChild(cardSection);
+
+            cell.appendChild(card);
+
+            gridx.appendChild(cell);
+
+            containerCard.appendChild(gridx);
+
+            resultCards.appendChild(containerCard);
         }
     });
 };
 
-let renderHistory = function() {
+
 
 var fetchButton = document.getElementById('techyModal');
-var techyModal = document.getElementById('techyModal')
+var techyModal = document.getElementById('techyModal');
+
 function getApi() {
+
     console.log("click")
  
-fetch('https://techy-api.vercel.app/api/json')
-.then(response =>response.json())
-.then(data => {
-    console.log(data)
-   
+    fetch('https://techy-api.vercel.app/api/json')
+    .then(response =>response.json())
+    .then(data => {
+        console.log(data)
+    
 
-        var techyPhrase = document.createElement('h1')
-        techyPhrase.textContent = data.message
+            var techyPhrase = document.createElement('h1')
+            techyPhrase.textContent = data.message
 
-        techyModal.append(data.message)
-})
+            techyModal.append(data.message)
+    })
 
 }
+
 fetchButton.addEventListener('click', getApi);
 
 
- let oldData = JSON.parse(localStorage.getItem("searched")) || [];
-    console.log(oldData);
-    searchedEl.innerHTML = "";
 
-    for (let i=0; i < oldData.length; i++) {
-        let searchedBlock = document.createElement("p");
-        searchedBlock.textContent = oldData[i];
-        searchedEl.appendChild(searchedBlock);
-    }
+// let renderHistory = function() {
 
-    console.log(recipeInput);
-    oldData.push(recipeInput);
-    localStorage.setItem("searched", oldData);
-};
+//  let oldData = JSON.parse(localStorage.getItem("searched")) || [];
+//     console.log(oldData);
+//     searchedEl.innerHTML = "";
+
+//     for (let i=0; i < oldData.length; i++) {
+//         let searchedBlock = document.createElement("p");
+//         searchedBlock.textContent = oldData[i];
+//         searchedEl.appendChild(searchedBlock);
+//     }
+
+//     console.log(recipeInput);
+//     oldData.push(recipeInput);
+//     localStorage.setItem("searched", oldData);
+// };
+
+
 
 
 // DO NOT DELETE :)
@@ -134,5 +164,5 @@ fetchButton.addEventListener('click', getApi);
 
 // call funciton when page loads
 getParams();
-renderHistory();
+// renderHistory();
 // searchAPI();
