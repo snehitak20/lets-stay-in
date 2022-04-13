@@ -59,6 +59,8 @@ let searchAPI = function() {
 
             let image = document.createElement("img");
             image.setAttribute("src", data.results[i].image);
+            image.setAttribute("data-open", "recipeModal");
+            image.classList.add("button");
 
             let recipeTile = document.createElement("h6");
             recipeTile.innerHTML = data.results[i].title;
