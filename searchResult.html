@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Result</title>
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <title>Search Result</title>
 
     <!-- Link to Foundation framework-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
+    <!-- Compressed CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous"> -->
+    <!-- Compressed JavaScript -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script> -->
     
     <!-- Link to Goole Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +21,7 @@
     <!-- Link to external CSS -->
     <link rel="stylesheet" href="./assets/searchResult.css">
 </head>
+
 <body>
     <div class="container">
         <div class="left-div">
@@ -42,25 +46,28 @@
                     <input id="searchBtn" type="image" src="./assets/images/001-searching.png"/>
                 </div>
             </div>
+
             <div>
                 <h2>Search History</h2>
-                <input type="text">
+                <p class="searched"></p>
             </div>
 
             <div>
-                <button>Generate a movie</button>
-                <button>Generate a techy phase</button>
+                <a class="button primary" href="#">Primary</a>
+                <a class="button secondary" href="#">Secondary</a>
             </div>
+
         </div>
 
         <div class="right-div results-div">
+            
+          
 
         </div>
     </div>
     
      <!-- Link to Foundation script -->
      <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script> -->
-     <!-- <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script> -->
      <script src="./assets/searchResult.js"></script>
 </body>
 </html>
