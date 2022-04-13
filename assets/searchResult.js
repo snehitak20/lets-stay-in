@@ -7,6 +7,7 @@ let maxTimeInput;
 let dietInput;
 
 
+
 // on page load, we execute the getParams() function
 let getParams = function() {
     //Get search params out of the URL
@@ -93,8 +94,8 @@ fetchButton.addEventListener('click', getApi);
     }
 
     console.log(recipeInput);
-    oldData.push(recipeInput);
-    localStorage.setItem("searched", oldData);
+    // oldData.push([recipeInput]);
+    localStorage.setItem("searched", recipeInput);
 };
 
 
@@ -133,6 +134,7 @@ fetchButton.addEventListener('click', getApi);
 
 
 // call funciton when page loads
-getParams();
 renderHistory();
+getParams();
+
 // searchAPI();
