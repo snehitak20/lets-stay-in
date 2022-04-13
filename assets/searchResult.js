@@ -55,8 +55,15 @@ let searchAPI = function() {
 
 };
 
+var techyBtn = document.getElementsByClassName("techy")
+ 
+fetch('https://techy-api.vercel.app/api/json')
+.then(response =>response.json())
+.then(data => {
+    console.log(data)
 
-
+        var techyPhrase = document.createElement()
+})
 
 
 
