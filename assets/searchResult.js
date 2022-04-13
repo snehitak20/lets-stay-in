@@ -1,19 +1,25 @@
+let resultsEl = document.querySelector(".results-div");
+let searchedEl = document.querySelector(".searched");
+
 let searchParam;
 let recipeInput;
 let maxTimeInput;
 let dietInput;
 
-let resultsEl = document.querySelector(".results-div");
 
-//on page load, we execute the getParams() function
+// on page load, we execute the getParams() function
 let getParams = function() {
     //Get search params out of the URL
     //for now just one value
-    searchParams = document.location.search.split("&"); 
+    searchParam = document.location.search.split("&"); 
+    console.log(searchParam);
     //searchParams = [?q=pasta, maxreadytime=60, diet=vegan];
-    recipeInput = searchParams[0].split("=").pop();
-    maxTimeInput = searchParams[1].split("=").pop();
-    dietInput = searchParams[2].split("=").pop();
+    recipeInput = searchParam[0].split("=").pop();
+    console.log(recipeInput);
+    maxTimeInput = searchParam[1].split("=").pop();
+    console.log(maxTimeInput);
+    dietInput = searchParam[2].split("=").pop();
+    console.log(dietInput);
 
     searchAPI();
 };
@@ -25,7 +31,6 @@ let searchAPI = function() {
     let spoonacularSkAPI= "2feecf75b18e4df9873c1f4dec8b24c4";
 
     let complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularKgAPI}`;
-
 
     fetch(complexSearchAPIUrl)
     .then(function(Response){
@@ -51,10 +56,10 @@ let searchAPI = function() {
             //append recipeCard to results-div
             resultsEl.appendChild(recipeCard);
         }
-    })
-
+    });
 };
 
+let renderHistory = function() {
 
 var fetchButton = document.getElementById('techyModal');
 var techyModal = document.getElementById('techyModal')
@@ -65,6 +70,7 @@ fetch('https://techy-api.vercel.app/api/json')
 .then(response =>response.json())
 .then(data => {
     console.log(data)
+   
 
         var techyPhrase = document.createElement('h1')
         techyPhrase.textContent = data.message
@@ -76,7 +82,20 @@ fetch('https://techy-api.vercel.app/api/json')
 fetchButton.addEventListener('click', getApi);
 
 
+ let oldData = JSON.parse(localStorage.getItem("searched")) || [];
+    console.log(oldData);
+    searchedEl.innerHTML = "";
 
+    for (let i=0; i < oldData.length; i++) {
+        let searchedBlock = document.createElement("p");
+        searchedBlock.textContent = oldData[i];
+        searchedEl.appendChild(searchedBlock);
+    }
+
+    console.log(recipeInput);
+    oldData.push(recipeInput);
+    localStorage.setItem("searched", oldData);
+};
 
 
 // DO NOT DELETE :)
@@ -115,3 +134,5 @@ fetchButton.addEventListener('click', getApi);
 
 // call funciton when page loads
 getParams();
+renderHistory();
+// searchAPI();
