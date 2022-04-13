@@ -61,7 +61,28 @@ let searchAPI = function() {
 
 let renderHistory = function() {
 
-    let oldData = JSON.parse(localStorage.getItem("searched")) || [];
+var fetchButton = document.getElementById('techyModal');
+var techyModal = document.getElementById('techyModal')
+function getApi() {
+    console.log("click")
+ 
+fetch('https://techy-api.vercel.app/api/json')
+.then(response =>response.json())
+.then(data => {
+    console.log(data)
+   
+
+        var techyPhrase = document.createElement('h1')
+        techyPhrase.textContent = data.message
+
+        techyModal.append(data.message)
+})
+
+}
+fetchButton.addEventListener('click', getApi);
+
+
+ let oldData = JSON.parse(localStorage.getItem("searched")) || [];
     console.log(oldData);
     searchedEl.innerHTML = "";
 
@@ -75,13 +96,6 @@ let renderHistory = function() {
     oldData.push(recipeInput);
     localStorage.setItem("searched", oldData);
 };
-
-
-
-
-
-
-
 
 
 // DO NOT DELETE :)
