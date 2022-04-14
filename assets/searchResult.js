@@ -1,28 +1,27 @@
-let searchBtnEl = document.querySelector("#searchBtn");
+var searchBtnEl = document.querySelector("#searchBtn");
 
-let recipeInputEl = document.querySelector("#recipeInput");
-let maxReadyTimeInputEl = document.querySelector("#maxReadyTimeInput");
-let dietInputEl = document.querySelector("#dietInput");
+var recipeInputEl = document.querySelector("#recipeInput");
+var maxReadyTimeInputEl = document.querySelector("#maxReadyTimeInput");
+var dietInputEl = document.querySelector("#dietInput");
 
-let recipeInput;
-let maxTimeInput;
-let dietInupt;
+var recipeInput;
+var maxTimeInput;
+var dietInupt;
+
+var resultsEl = document.querySelector(".results-div");
+var searchedEl = document.querySelector(".searched");
+var resultCards = document.querySelector(".right-div");
+var recipeModalEl = document.querySelector("#recipeModaldiv");
+var recipeEl = document.querySelector("#recipeModal");
+var bodyEl = document.querySelector("body");
 
 
-let resultsEl = document.querySelector(".results-div");
-let searchedEl = document.querySelector(".searched");
-let resultCards = document.querySelector(".right-div");
-let recipeModalEl = document.querySelector("#recipeModaldiv");
-let recipeEl = document.querySelector("#recipeModal");
-let bodyEl = document.querySelector("body");
-
-
-let searchParam;
+var searchParam;
 
 
 
 // on page load, we execute the getParams() function
-let getParams = function() {
+var getParams = function() {
     //Get search params out of the URL
     //for now just one value
     searchParam = document.location.search.split("&"); 
@@ -30,6 +29,10 @@ let getParams = function() {
     //searchParams = [?q=pasta, maxreadytime=60, diet=vegan];
     recipeInput = searchParam[0].split("=").pop();
     console.log(recipeInput);
+
+    addToSearchHistory();
+
+
     maxTimeInput = searchParam[1].split("=").pop();
     console.log(maxTimeInput);
     dietInput = searchParam[2].split("=").pop();
@@ -38,13 +41,13 @@ let getParams = function() {
     searchAPI();
 };
 
-let searchAPI = function() {
+var searchAPI = function() {
 
-    let spoonacularKgAPI= "04508d6689fd404f88c686fe7d619d7d";
-    let spoonacularScAPI= "d50e45466d7749c6b088e5e791b622e8";
-    let spoonacularSkAPI= "2feecf75b18e4df9873c1f4dec8b24c4";
+    var spoonacularKgAPI= "04508d6689fd404f88c686fe7d619d7d";
+    var spoonacularScAPI= "d50e45466d7749c6b088e5e791b622e8";
+    var spoonacularSkAPI= "2feecf75b18e4df9873c1f4dec8b24c4";
 
-    let complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularSkAPI}`;
+    var complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularSkAPI}`;
 
     fetch(complexSearchAPIUrl)
     .then(function(Response){
@@ -53,25 +56,25 @@ let searchAPI = function() {
     .then(function(data){
         console.log(data);
 
-        for (let i=0;  i<4; i++) {
-            let containerCard = document.createElement("div");
+        for (var i=0;  i<4; i++) {
+            var containerCard = document.createElement("div");
             containerCard.classList.add("grid-container");
 
-            let gridx = document.createElement("div");
+            var gridx = document.createElement("div");
             // gridx.classList.add("grid-x", "grid-margin-x", "small-up-2", "medium-up-3");-dont use. 
 
-            let cell= document.createElement("div");
+            var cell= document.createElement("div");
             cell.classList.add("cell");
 
-            let card= document.createElement("div");
+            var card= document.createElement("div");
             card.classList.add("card");
 
-            let cardSection = document.createElement("div");
+            var cardSection = document.createElement("div");
             cardSection.classList.add("card-section");
 
 
 
-            let image = document.createElement("img");
+            var image = document.createElement("img");
             image.setAttribute("src", data.results[i].image);
 
             image.setAttribute(`data-open`, `recipeModal${i}`);
@@ -79,22 +82,22 @@ let searchAPI = function() {
             // console.log(`recipeModal${i}`);
             image.classList.add("button");
 
-            let modal = document.createElement("div");
+            var modal = document.createElement("div");
             modal.classList.add("reveal");
             modal.setAttribute(`id`, `recipeModal${i}`);
             modal.setAttribute("data-reveal","");
           
             
-            let readyTime = document.createElement("p");
+            var readyTime = document.createElement("p");
             readyTime.innerHTML = "Maxium cook time: " + data.results[i].readyInMinutes + "min";
             console.log(data.results[i].readyInMinutes);
 
-            let summary = document.createElement("p");
+            var summary = document.createElement("p");
             summary.innerHTML = data.results[i].summary;
             console.log(data.results[i].summary);
 
-            // let sourceUrlDiv = document.createElement("div");
-            let sourceUrl = document.createElement("a")
+            // var sourceUrlDiv = document.createElement("div");
+            var sourceUrl = document.createElement("a")
             sourceUrl.setAttribute("href", data.results[i].sourceUrl);
             sourceUrl.innerText = "***Full recipe click here***";
             // sourceUrlDiv.innerHTML(sourceUrl);
@@ -118,7 +121,7 @@ let searchAPI = function() {
 
 
 
-            let recipeTile = document.createElement("h6");
+            var recipeTile = document.createElement("h6");
             recipeTile.innerHTML = data.results[i].title;
             console.log(data.results[i].title);
 
@@ -156,9 +159,10 @@ function getApi() {
     .then(data => {
         console.log(data)
             
-            var techyPhrase = document.createElement('h1')
-            techyPhrase.classList.add('techyText')
-            techyPhrase.textContent = data.message
+            var techyPhrase = document.createElement('h1');
+            techyPhrase.classList.add('techyText');
+
+            techyPhrase.textContent = data.message;
 
             techyModal.append(data.message)
     })
@@ -197,23 +201,29 @@ function getMovieApi() {
 movieButton.addEventListener('click', getMovieApi);
 
 
-let searchedArr;
+var searchedArr;
 
-let renderHistory = function() {
+var renderHistory = function() {
 
-    searchedArr = localStorage.getItem("searched") || [];
+    var searched = localStorage.getItem("searched");
+    console.log("searched:", searched);
 
-    for (let i=0; i < searchedArr.length; i++) {
-        let searchedBlock = document.createElement("p");
+    searchedArr = JSON.parse(localStorage.getItem("searched")) || [];
+
+    for (var i=0; i < searchedArr.length; i++) {
+        var searchedBlock = document.createElement("p");
         searchedBlock.textContent = searchedArr[i];
         searchedEl.appendChild(searchedBlock);
     }
+    
 };
 
 
-let addToSearchHistory = function () {
+var addToSearchHistory = function () {
+
+    searchedArr = JSON.parse(localStorage.getItem("searched")) || [];
     searchedArr.push(recipeInput);
-    localStorage.setItem("searched", searchedArr);
+    localStorage.setItem("searched", JSON.stringify(searchedArr));
 }
 
 
@@ -227,3 +237,22 @@ renderHistory();
 searchBtnEl.addEventListener("click", function(){
     searchAPI();
 });
+
+
+
+searchBtnEl.addEventListener("click", function(){
+    recipeInput = recipeInputEl.value.trim();
+    maxTimeInput = maxReadyTimeInputEl.value.trim();
+    dietInupt= dietInputEl.value.trim();
+
+    if (!recipeInput || !maxTimeInput || !dietInupt) {
+        console.error('You need a search input value!');
+        return;
+    }
+   
+    var querySting = `./searchResult.html?q=${recipeInput}&maxreadytime=${maxTimeInput}&diet=${dietInupt}`;
+    location.assign(querySting);
+
+    getParams();
+    renderHistory();
+})
