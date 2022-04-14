@@ -85,7 +85,7 @@ let searchAPI = function() {
 
 
 
-var fetchButton = document.getElementById('techyModal');
+var fetchButton = document.getElementById('techyBtn');
 var techyModal = document.getElementById('techyModal');
 
 function getApi() {
@@ -96,9 +96,9 @@ function getApi() {
     .then(response =>response.json())
     .then(data => {
         console.log(data)
-    
-
+            
             var techyPhrase = document.createElement('h1')
+            techyPhrase.classList.add('techyText')
             techyPhrase.textContent = data.message
 
             techyModal.append(data.message)
@@ -107,6 +107,35 @@ function getApi() {
 }
 
 fetchButton.addEventListener('click', getApi);
+
+
+var movieButton = document.getElementById('movieBtn');
+var movieModal = document.getElementById('movieModal');
+
+function getMovieApi() {
+
+    console.log("click")
+ function getRandomIntInclusive(min, max) {
+            min = Math.ceil(1);
+            max = Math.floor(20);
+            return Math.floor(Math.random() * (max - min + 1) + min); 
+          } console.log(getRandomIntInclusive())
+          var random = getRandomIntInclusive()
+    fetch('https://api.themoviedb.org/3/movie/popular?api_key=269646d60e3a5ebc975b683c8ffa0dad&language=en-US&page=' + random )
+    .then(response =>response.json())
+    .then(data => {
+        console.log(data)
+        
+             var movieTitle = document.createElement('h1')
+             movieTitle.classList.add('movieText')
+             movieTitle.textContent = data.results[random].title
+
+             movieModal.append(data.results[random].title)
+    })
+
+}
+
+movieButton.addEventListener('click', getMovieApi);
 
 
 
