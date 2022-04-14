@@ -38,7 +38,7 @@ var getParams = function() {
     dietInput = searchParam[2].split("=").pop();
     console.log(dietInput);
 
-    // searchAPI();
+    searchAPI();
 };
 
 var searchAPI = function() {
@@ -284,6 +284,6 @@ searchBtnEl.addEventListener("click", function(){
     var querySting = `./searchResult.html?q=${recipeInput}&maxreadytime=${maxTimeInput}&diet=${dietInupt}`;
     location.assign(querySting);
 
-    getParams();
+    // getParams();
     // renderHistory();
 })
