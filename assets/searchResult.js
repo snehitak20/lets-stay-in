@@ -38,7 +38,7 @@ var getParams = function() {
     dietInput = searchParam[2].split("=").pop();
     console.log(dietInput);
 
-    searchAPI();
+    // searchAPI();
 };
 
 var searchAPI = function() {
@@ -47,7 +47,7 @@ var searchAPI = function() {
     var spoonacularScAPI= "d50e45466d7749c6b088e5e791b622e8";
     var spoonacularSkAPI= "2feecf75b18e4df9873c1f4dec8b24c4";
 
-    var complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularSkAPI}`;
+    var complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularKgAPI}`;
 
     fetch(complexSearchAPIUrl)
     .then(function(Response){
@@ -203,35 +203,65 @@ movieButton.addEventListener('click', getMovieApi);
 
 var searchedArr;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var addToSearchHistory = function () {
+
+    searchedArr = JSON.parse(localStorage.getItem("searched")) || []; //[chicken]
+    console.log(searchedArr);
+    
+    searchedArr.push(recipeInput); //[chicken, beef]
+    localStorage.setItem("searched", JSON.stringify(searchedArr));
+    console.log(searchedArr);
+    renderHistory();
+}
+
+
 var renderHistory = function() {
 
-    var searched = localStorage.getItem("searched");
-    console.log("searched:", searched);
+    // var searched = localStorage.getItem("searched");
+    // console.log("searched:", searched);
 
-    searchedArr = JSON.parse(localStorage.getItem("searched")) || [];
+    // searchedArr = JSON.parse(localStorage.getItem("searched")) || [];
+
+    // searchedEl.innerHTML = "";
 
     for (var i=0; i < searchedArr.length; i++) {
         var searchedBlock = document.createElement("p");
         searchedBlock.textContent = searchedArr[i];
-        // searchedEl.innerHTML = "";
         searchedEl.appendChild(searchedBlock);
     }
     
 };
 
 
-var addToSearchHistory = function () {
-
-    searchedArr = JSON.parse(localStorage.getItem("searched")) || [];
-    searchedArr.push(recipeInput);
-    localStorage.setItem("searched", JSON.stringify(searchedArr));
-}
-
 
 
 // call funciton when page loads
 getParams();
-renderHistory();
+// addToSearchHistory();
+// renderHistory();
 // searchAPI();
 
 
@@ -255,5 +285,5 @@ searchBtnEl.addEventListener("click", function(){
     location.assign(querySting);
 
     getParams();
-    renderHistory();
+    // renderHistory();
 })
