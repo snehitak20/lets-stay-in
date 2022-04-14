@@ -118,9 +118,6 @@ var searchAPI = function() {
             // recipeCard.appendChild(sourceUrl);
 
 
-
-
-
             var recipeTile = document.createElement("h6");
             recipeTile.innerHTML = data.results[i].title;
             console.log(data.results[i].title);
@@ -153,7 +150,8 @@ var techyModal = document.getElementById('techyModal');
 function getApi() {
 
     console.log("click")
- 
+    techyModal.innerHTML = "";
+
     fetch('https://techy-api.vercel.app/api/json')
     .then(response =>response.json())
     .then(data => {
@@ -161,7 +159,6 @@ function getApi() {
             
             var techyPhrase = document.createElement('h1');
             techyPhrase.classList.add('techyText');
-
             techyPhrase.textContent = data.message;
 
             techyModal.append(data.message)
@@ -177,7 +174,10 @@ var movieModal = document.getElementById('movieModal');
 
 function getMovieApi() {
 
-    console.log("click")
+    console.log("click");
+
+    movieModal.innerHTML = "";
+
  function getRandomIntInclusive(min, max) {
             min = Math.ceil(1);
             max = Math.floor(20);
