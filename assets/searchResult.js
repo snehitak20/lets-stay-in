@@ -1,12 +1,24 @@
+let searchBtnEl = document.querySelector("#searchBtn");
+
+let recipeInputEl = document.querySelector("#recipeInput");
+let maxReadyTimeInputEl = document.querySelector("#maxReadyTimeInput");
+let dietInputEl = document.querySelector("#dietInput");
+
+let recipeInput;
+let maxTimeInput;
+let dietInupt;
+
+
 let resultsEl = document.querySelector(".results-div");
 let searchedEl = document.querySelector(".searched");
-let resultCards = document.querySelector(".right-div")
+let resultCards = document.querySelector(".right-div");
+let recipeModalEl = document.querySelector("#recipeModaldiv");
+let recipeEl = document.querySelector("#recipeModal");
+let bodyEl = document.querySelector("body");
 
 
 let searchParam;
-let recipeInput;
-let maxTimeInput;
-let dietInput;
+
 
 
 // on page load, we execute the getParams() function
@@ -32,7 +44,7 @@ let searchAPI = function() {
     let spoonacularScAPI= "d50e45466d7749c6b088e5e791b622e8";
     let spoonacularSkAPI= "2feecf75b18e4df9873c1f4dec8b24c4";
 
-    let complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularKgAPI}`;
+    let complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularSkAPI}`;
 
     fetch(complexSearchAPIUrl)
     .then(function(Response){
@@ -41,7 +53,7 @@ let searchAPI = function() {
     .then(function(data){
         console.log(data);
 
-        for (let i=0;  i<6; i++) {
+        for (let i=0;  i<4; i++) {
             let containerCard = document.createElement("div");
             containerCard.classList.add("grid-container");
 
@@ -57,10 +69,54 @@ let searchAPI = function() {
             let cardSection = document.createElement("div");
             cardSection.classList.add("card-section");
 
+
+
             let image = document.createElement("img");
             image.setAttribute("src", data.results[i].image);
-            image.setAttribute("data-open", "recipeModal");
+
+            image.setAttribute(`data-open`, `recipeModal${i}`);
+            // image.setAttribute("data-open", "recipeModal");
+            // console.log(`recipeModal${i}`);
             image.classList.add("button");
+
+            let modal = document.createElement("div");
+            modal.classList.add("reveal");
+            modal.setAttribute(`id`, `recipeModal${i}`);
+            modal.setAttribute("data-reveal","");
+          
+            
+            let readyTime = document.createElement("p");
+            readyTime.innerHTML = "Maxium cook time: " + data.results[i].readyInMinutes + "min";
+            console.log(data.results[i].readyInMinutes);
+
+            let summary = document.createElement("p");
+            summary.innerHTML = data.results[i].summary;
+            console.log(data.results[i].summary);
+
+            // let sourceUrlDiv = document.createElement("div");
+            let sourceUrl = document.createElement("a")
+            sourceUrl.setAttribute("href", data.results[i].sourceUrl);
+            sourceUrl.innerText = "***Full recipe click here***";
+            // sourceUrlDiv.innerHTML(sourceUrl);
+           
+            console.log(data.results[i].sourceUrl);
+
+            // image.addEventListener('click', function() {
+            //     $(`recipeModal${i}`).foundation('reveal','open');
+            //   });
+
+            // recipeEl.appendChild(readyTime);
+            // recipeEl.appendChild(summary);
+            modal.appendChild(readyTime);
+            modal.appendChild(summary);
+            modal.appendChild(sourceUrl);
+            recipeModalEl.appendChild(modal);
+            
+            // recipeCard.appendChild(sourceUrl);
+
+
+
+
 
             let recipeTile = document.createElement("h6");
             recipeTile.innerHTML = data.results[i].title;
@@ -69,6 +125,8 @@ let searchAPI = function() {
             //append element to div
             cardSection.appendChild(recipeTile);
             cardSection.appendChild(image);
+            // cardSection.appendChild(sourceUrl);
+
 
             card.appendChild(cardSection);
 
@@ -80,6 +138,7 @@ let searchAPI = function() {
 
             resultCards.appendChild(containerCard);
         }
+        $(document).foundation();
     });
 };
 
@@ -138,62 +197,33 @@ function getMovieApi() {
 movieButton.addEventListener('click', getMovieApi);
 
 
+let searchedArr;
 
-// let renderHistory = function() {
+let renderHistory = function() {
 
-//  let oldData = JSON.parse(localStorage.getItem("searched")) || [];
-//     console.log(oldData);
-//     searchedEl.innerHTML = "";
+    searchedArr = localStorage.getItem("searched") || [];
 
-//     for (let i=0; i < oldData.length; i++) {
-//         let searchedBlock = document.createElement("p");
-//         searchedBlock.textContent = oldData[i];
-//         searchedEl.appendChild(searchedBlock);
-//     }
-
-//     console.log(recipeInput);
-//     oldData.push(recipeInput);
-//     localStorage.setItem("searched", oldData);
-// };
+    for (let i=0; i < searchedArr.length; i++) {
+        let searchedBlock = document.createElement("p");
+        searchedBlock.textContent = searchedArr[i];
+        searchedEl.appendChild(searchedBlock);
+    }
+};
 
 
-
-
-// DO NOT DELETE :)
-// let readyTime = document.createElement("p");
-// readyTime.innerHTML = data.results[i].readyInMinutes;
-// console.log(data.results[i].readyInMinutes);
-
-// let summary = document.createElement("p");
-// summary.innerHTML = data.results[i].summary;
-// console.log(data.results[i].summary);
-
-// let sourceUrl = document.createElement("a");
-// sourceUrl.setAttribute("src", data.results[i].sourceUrl);
-// console.log(data.results[i].sourceUrl);
-
-
-
-// recipeCard.appendChild(readyTime);
-// recipeCard.appendChild(summary);
-// recipeCard.appendChild(sourceUrl);
-
-
-
-
-
-
-
-
-
-
-
-
-
+let addToSearchHistory = function () {
+    searchedArr.push(recipeInput);
+    localStorage.setItem("searched", searchedArr);
+}
 
 
 
 // call funciton when page loads
 getParams();
-// renderHistory();
+renderHistory();
 // searchAPI();
+
+
+searchBtnEl.addEventListener("click", function(){
+    searchAPI();
+});

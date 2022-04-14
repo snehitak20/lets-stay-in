@@ -10,9 +10,11 @@
     <!-- Link to Foundation framework-->
     <!-- Compressed CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/css/foundation.min.css" crossorigin="anonymous">
-    <!-- Compressed JavaScript -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script> -->
     
+
+    <!-- animate.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <!-- Link to Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,9 +35,10 @@
             <div id="search-div">
                 <div id="filter-div">
                     <input id="recipeInput" type="text" placeholder="What recipe are you searching for?">
-                    <input id="maxReadyTimeInput" type="text" placeholder="Max Ready Time (Minutes)">
+                    <input id="maxReadyTimeInput" type="text" placeholder="Cook Time (min)">
                     <select id="dietInput">
                         <option value="" disabled selected>Select</option>
+                        <option value="No Preferences">No Preferences</option>
                         <option value="Gluten Free">Gluten Free</option>
                         <option value="Ketogenic">Ketogenic</option>
                         <option value="Vegetarian">Vegetarian</option>
@@ -48,8 +51,8 @@
             </div>
 
             <div>
-                <h2>Search History</h2>
-                <p class="searched"></p>
+                <h4>Search History</h4>
+                <div class="searched"></div>
             </div>
 
             
@@ -74,30 +77,31 @@
                 </div>
 
             </div>
-
-           
-        
         </div>
 
-
+        <!-- small-up-2 medium-up-3 large-up-3 -->
 
         <div class="grid-container">
-            <div class="right-div results-div grid-x grid-margin-x small-up-2 medium-up-3 large-up-3"> 
+            <div class="right-div results-div grid-x grid-margin-x small-up-3 medium-up-4 large-up-4"> 
                 <!-- cards goes here -->
             </div>
     
-            <div class="right-div results-div grid-x grid-margin-x small-up-2 medium-up-3 large-up-3"> 
+            <div class="right-div results-div grid-x grid-margin-x small-up-3 medium-up-4 large-up-4"> 
                 <!-- cards goes here -->
             </div>
         </div>
-        <div class="reveal" id="recipeModal" data-reveal>
-            <h1>Recipe Title</h1>
-            <p class="lead">Your couch. It is mine.</p>
-            <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+
+        <div id="recipeModaldiv"></div>
+
+        <!-- <div class="reveal" id="recipeModal" data-reveal>
+
+            <h1 class="recipeTitle"></h1>
             <button class="close-button" data-close aria-label="Close reveal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>
-        </div>
+
+        </div> -->
+
     </div>
     
 
@@ -107,8 +111,6 @@
      <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>;
      <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js" crossorigin="anonymous"></script>
      <script src="./assets/searchResult.js"></script>
-     <script>
-        $(document).foundation();
-    </script>
+   
 </body>
 </html>
