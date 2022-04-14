@@ -17,8 +17,9 @@ body {
 h1 {
     text-align:center;
     font-size: 100px;
-    margin-top: 20%;
+    margin-top: 12%;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 #search-div {
@@ -31,6 +32,8 @@ h1 {
 #filter-div {
     display: flex;
     flex-direction: column;
+    margin-left: 100px;
+    margin-top: 5px;
 }
 
 #maxReadyTimeInput, #recipeInput {
@@ -51,7 +54,7 @@ h1 {
 }
 
 #searchBtn {
-    margin-left: 20px;
-    height: 120px;
-    width: 120px;
+    margin-left: 35px;
+    height: 90px;
+    width: 90px;
 }
