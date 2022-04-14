@@ -56,7 +56,7 @@ var searchAPI = function() {
     .then(function(data){
         console.log(data);
 
-        for (var i=0;  i<4; i++) {
+        for (var i=0;  i<10; i++) {
             var containerCard = document.createElement("div");
             containerCard.classList.add("grid-container");
 
@@ -213,6 +213,7 @@ var renderHistory = function() {
     for (var i=0; i < searchedArr.length; i++) {
         var searchedBlock = document.createElement("p");
         searchedBlock.textContent = searchedArr[i];
+        // searchedEl.innerHTML = "";
         searchedEl.appendChild(searchedBlock);
     }
     
