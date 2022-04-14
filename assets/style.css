@@ -20,6 +20,8 @@ h1 {
     margin-top: 12%;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px #000000;
+    animation: fadeInDown;
+    animation-duration: 1s;
 }
 
 #search-div {
