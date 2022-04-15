@@ -111,8 +111,22 @@ body {
 }
 
 #movieModal {
+    align-items: center;
     color:black;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
+
+#movieModal h1 {
+   font-weight: bold;
+}
+
+#movieModal img {
+   
+   max-height: 600px;
+   max-width: 375px;
+ }
 
 #recipeModal {
     background-color: white;
