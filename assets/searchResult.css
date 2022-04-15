@@ -134,3 +134,78 @@ body {
     background-color: white;
     color: black;
 }
+
+
+
+/* media queries */
+
+@media screen and (max-width:390px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left-div {
+        width: 100%;
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    .right-div {
+        margin-left: 0;
+    }
+
+    .searchHistoryDiv {
+        display:none;
+    }
+
+    #filter-div {
+        margin-left: 0;
+    }
+
+    #searchBtn {
+        margin-left: 0;
+    }
+
+    .reveal {
+        width: 50vw;
+        height: auto;
+    }
+};
+
+
+
+@media screen and (max-width:600px) {
+
+    /* #filter-div {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        margin-left: 250px;
+    } */
+
+    /* #maxReadyTimeInput, #recipeInput {
+        width: 100px;
+        padding: 8px;
+    }
+    
+    #dietInput {
+        width: 100px; 
+        padding: 5px; 
+    } */
+   
+
+};
+
+
+
+/* 
+@media screen and (max-width:992px) {
+    .right-div {
+        width: 50%;
+    }
+    .left-div {
+        width: 50%;
+    }
+} */
