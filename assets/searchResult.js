@@ -48,7 +48,7 @@ var searchAPI = function() {
     var spoonacularSkAPI= "2feecf75b18e4df9873c1f4dec8b24c4";
     var spoonacularTrashAPI= "f27dc9c370ab47f5be03a2a48f783acf"; //last commit use this!!!
 
-    var complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularScAPI}`;
+    var complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularTrashAPI}`;
 
     fetch(complexSearchAPIUrl)
     .then(function(Response){
@@ -190,7 +190,7 @@ function getMovieApi() {
     .then(data => {
         console.log(data)
         
-        var movieTitle = document.createElement('h1') 
+        var movieTitle = document.createElement('h3') 
         var moviePoster = document.createElement('img')
         var movieSummary = document.createElement('p')
         var breakEl = document.createElement('br') 
@@ -204,10 +204,10 @@ function getMovieApi() {
         movieSummary.textContent = data.results[random].overview
         
 
-        movieModal.append(moviePoster)
-        movieModal.append(data.results[random].title)
+        movieModal.append(moviePoster);
+        movieModal.append(movieTitle);
         movieModal.append(breakEl);
-        movieModal.append(data.results[random].overview)
+        movieModal.append(movieSummary);
     })
 
 }
@@ -216,27 +216,6 @@ movieButton.addEventListener('click', getMovieApi);
 
 
 var searchedArr;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -261,12 +240,12 @@ var renderHistory = function() {
 
     // searchedEl.innerHTML = "";
 
-    for (var i=0; i < searchedArr.length; i++) {
+    // for (var i=0; i < searchedArr.length; i++) {
+    for (var i=searchedArr.length-1 ; i >= searchedArr.length-5 ; i--) {
         var searchedBlock = document.createElement("p");
         searchedBlock.textContent = searchedArr[i];
         searchedEl.appendChild(searchedBlock);
     }
-    
 };
 
 
