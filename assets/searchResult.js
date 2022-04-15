@@ -190,11 +190,24 @@ function getMovieApi() {
     .then(data => {
         console.log(data)
         
-             var movieTitle = document.createElement('h1')
-             movieTitle.classList.add('movieText')
-             movieTitle.textContent = data.results[random].title
+        var movieTitle = document.createElement('h1') 
+        var moviePoster = document.createElement('img')
+        var movieSummary = document.createElement('p')
+        var breakEl = document.createElement('br') 
+       
+        movieTitle.classList.add('movieText')
+        movieSummary.classList.add('movieText')
+        movieTitle.textContent = data.results[random].title
 
-             movieModal.append(data.results[random].title)
+        moviePoster.setAttribute("src", "https://image.tmdb.org/t/p/w780/" + data.results[random].poster_path);
+        console.log(data.results[random].poster_path)
+        movieSummary.textContent = data.results[random].overview
+        
+
+        movieModal.append(moviePoster)
+        movieModal.append(data.results[random].title)
+        movieModal.append(breakEl);
+        movieModal.append(data.results[random].overview)
     })
 
 }
