@@ -46,8 +46,9 @@ var searchAPI = function() {
     var spoonacularKgAPI= "04508d6689fd404f88c686fe7d619d7d";
     var spoonacularScAPI= "d50e45466d7749c6b088e5e791b622e8";
     var spoonacularSkAPI= "2feecf75b18e4df9873c1f4dec8b24c4";
+    var spoonacularTrashAPI= "f27dc9c370ab47f5be03a2a48f783acf"; //last commit use this!!!
 
-    var complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularKgAPI}`;
+    var complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularScAPI}`;
 
     fetch(complexSearchAPIUrl)
     .then(function(Response){
@@ -89,7 +90,7 @@ var searchAPI = function() {
           
             
             var readyTime = document.createElement("p");
-            readyTime.innerHTML = "Maxium cook time: " + data.results[i].readyInMinutes + "min";
+            readyTime.innerHTML = "Maximum cook time: " + data.results[i].readyInMinutes + "min";
             console.log(data.results[i].readyInMinutes);
 
             var summary = document.createElement("p");
