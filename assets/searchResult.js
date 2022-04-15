@@ -46,9 +46,8 @@ var searchAPI = function() {
     var spoonacularKgAPI= "04508d6689fd404f88c686fe7d619d7d";
     var spoonacularScAPI= "d50e45466d7749c6b088e5e791b622e8";
     var spoonacularSkAPI= "2feecf75b18e4df9873c1f4dec8b24c4";
-    var spoonacularTrashAPI= "f27dc9c370ab47f5be03a2a48f783acf"; //last commit use this!!!
 
-    var complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularScAPI}`;
+    var complexSearchAPIUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${recipeInput}&diet=${dietInput}&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&maxReadyTime=${maxTimeInput}&num=6&apiKey=${spoonacularKgAPI}`;
 
     fetch(complexSearchAPIUrl)
     .then(function(Response){
@@ -90,7 +89,7 @@ var searchAPI = function() {
           
             
             var readyTime = document.createElement("p");
-            readyTime.innerHTML = "Maximum cook time: " + data.results[i].readyInMinutes + "min";
+            readyTime.innerHTML = "Maxium cook time: " + data.results[i].readyInMinutes + "min";
             console.log(data.results[i].readyInMinutes);
 
             var summary = document.createElement("p");
@@ -117,6 +116,9 @@ var searchAPI = function() {
             recipeModalEl.appendChild(modal);
             
             // recipeCard.appendChild(sourceUrl);
+
+
+
 
 
             var recipeTile = document.createElement("h6");
@@ -151,8 +153,7 @@ var techyModal = document.getElementById('techyModal');
 function getApi() {
 
     console.log("click")
-    techyModal.innerHTML = "";
-
+ 
     fetch('https://techy-api.vercel.app/api/json')
     .then(response =>response.json())
     .then(data => {
@@ -160,6 +161,7 @@ function getApi() {
             
             var techyPhrase = document.createElement('h1');
             techyPhrase.classList.add('techyText');
+
             techyPhrase.textContent = data.message;
 
             techyModal.append(data.message)
@@ -175,39 +177,32 @@ var movieModal = document.getElementById('movieModal');
 
 function getMovieApi() {
 
-    console.log("click");
-
-    movieModal.innerHTML = "";
-
+    console.log("click")
  function getRandomIntInclusive(min, max) {
             min = Math.ceil(1);
             max = Math.floor(20);
             return Math.floor(Math.random() * (max - min + 1) + min); 
           } console.log(getRandomIntInclusive())
           var random = getRandomIntInclusive()
-    fetch('https://api.themoviedb.org/3/movie/popular?api_key=269646d60e3a5ebc975b683c8ffa0dad&language=en-US&page=' + random )
+    fetch('https://api.themoviedb.org/3/movie/popular?api_key=269646d60e3a5ebc975b683c8ffa0dad&language=en-US&page="/7RcyjraM1cB1Uxy2W9ZWrab4KCw.jpg' + random )
     .then(response =>response.json())
     .then(data => {
         console.log(data)
         
-        var movieTitle = document.createElement('h1') 
-        var moviePoster = document.createElement('img')
-        var movieSummary = document.createElement('p')
-        var breakEl = document.createElement('br') 
-       
-        movieTitle.classList.add('movieText')
-        movieSummary.classList.add('movieText')
-        movieTitle.textContent = data.results[random].title
+             var movieTitle = document.createElement('h1') 
+             var movieposter = document.createElement('img')
+             var movieSummary = document.createElement('p')
+            
+             movieTitle.classList.add('movieText')
+             movieSummary.classList.add('movieText')
 
-        moviePoster.setAttribute("src", "https://image.tmdb.org/t/p/w780/" + data.results[random].poster_path);
-        console.log(data.results[random].poster_path)
-        movieSummary.textContent = data.results[random].overview
-        
+             movieTitle.textContent = data.results[random].title
+             moviePoster.setAttribute("src", data.results[random].poster_path)
+             movieSummary.textContent = data.results[random].overview
 
-        movieModal.append(moviePoster)
-        movieModal.append(data.results[random].title)
-        movieModal.append(breakEl);
-        movieModal.append(data.results[random].overview)
+             movieModal.append(data.results[random].title)
+             movieSummary.append(data.results[random].poster_path)
+             movieSummary.append(data.results[random].overview)
     })
 
 }
