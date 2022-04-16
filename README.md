@@ -31,7 +31,7 @@ Buttons located in a column on the left will generate Techy phrase and Random mo
 ## Credits
 
 Creators:
-* Kristy Gao [LinkedIn](www.linkedin.com/in/kristixxg) || [Github](https://github.com/Kristixxg)
+* Kristy Guo [LinkedIn](www.linkedin.com/in/kristixxg) || [Github](https://github.com/Kristixxg)
 * Snehita Kolli [LinkedIn](https://www.linkedin.com/in/snehita-kolli-0abb23b1/) || [GitHub](https://github.com/snehitak20)
 * Sophia Custodia [LinkedIn](https://www.linkedin.com/in/sophia-custodia/) || [GitHub](https://github.com/sophtron5000)
 
@@ -46,8 +46,11 @@ APIs:
 
 ## Features
 
-Search input will wobble if the input is empty or not valid
+* Search input will wobble if the input is empty or not valid
 ![Input Wobble](./assets/gifs/wobble.gif)
+
+* Supports multiple media queries written within the CSS documentation. 
+![Media query](./assets/gifs/Search%20Result.gif)
 
 ## License
 Copyright (c) [2022] [SophiaCustodia, SnehitaKolli, KristyGao]
@@ -72,9 +75,7 @@ SOFTWARE.
 ![Markdown](https://img.shields.io/badge/markdown-%23000000.svg?style=for-the-badge&logo=markdown&logoColor=white)
 
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-white_check_mark
-eyes
-raised_hands
+
 
 
 
